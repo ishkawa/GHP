@@ -3,6 +3,10 @@ import Cocoa
 @NSApplicationMain
 
 class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDelegate, GitHubDelegate {
+    @IBOutlet var menu: NSMenu!
+    var statusItem: NSStatusItem!
+    var settingsWindowController: SettingsWindowController?
+
     var lastDate: NSDate
     let client: GitHub
     let timer: NSTimer
@@ -22,6 +26,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     }
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
+        statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(50.0)
+        statusItem.title = "GHP"
+        statusItem.target = self
+        statusItem.action = "showMenu"
+        statusItem.enabled = true
+
         client.delegate = self
         NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
     }
@@ -35,6 +45,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
                 workspace.openURL(URL)
             }
         }
+    }
+
+    func showMenu() {
+        statusItem.popUpStatusItemMenu(menu)
+    }
+
+    @IBAction func showSettingsWindow(sender: NSMenuItem) {
+        settingsWindowController = SettingsWindowController(windowNibName: "SettingsWindowController")
+        settingsWindowController?.showWindow(sender)
+    }
+
+    @IBAction func quit(sender: NSMenuItem) {
     }
 
     // MARK: GitHubDelegate

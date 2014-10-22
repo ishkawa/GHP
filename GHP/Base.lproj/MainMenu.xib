@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+            <connections>
+                <outlet property="delegate" destination="Voe-Tx-rLC" id="GzC-gU-4Uq"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="GHP" customModuleProvider="target">
+            <connections>
+                <outlet property="menu" destination="ETQ-VE-Zqb" id="MLT-B9-UgB"/>
+            </connections>
+        </customObject>
+        <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <menu id="ETQ-VE-Zqb">
+            <items>
+                <menuItem title="Settings" id="5tC-81-xNz">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="showSettingsWindow:" target="Voe-Tx-rLC" id="AAL-ps-MKg"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Quit" id="JsW-1T-Jpg">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="quit:" target="Voe-Tx-rLC" id="98b-XH-SSe"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="308" y="702.5"/>
+        </menu>
+    </objects>
+</document>
