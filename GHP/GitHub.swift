@@ -19,6 +19,7 @@ class GitHub: NSObject {
         let request = NSMutableURLRequest()
         request.URL = baseURL.URLByAppendingPathComponent(path)
         request.setValue("token \(accessToken)", forHTTPHeaderField: "Authorization")
+        request.cachePolicy = .ReloadIgnoringLocalAndRemoteCacheData
 
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { data, response, connectionError in
