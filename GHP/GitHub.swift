@@ -61,7 +61,16 @@ class GitHub: NSObject {
         }
     }
 
-    func fetchHTMLURLFromAPIPath(path: String, handler: (URL: NSURL) -> Void) {
+    func fetchHTMLURLFromAPIPath(APIPath: String, handler: (URL: NSURL) -> Void) {
+        var path = APIPath
+        if let basePath = baseURL.path {
+            // trim /api/v3 from APIPath for gh:e
+            path = path.stringByReplacingOccurrencesOfString(basePath,
+                withString: "",
+                options: .LiteralSearch,
+                range: nil)
+        }
+
         call(path) { response, error in
             if error != nil {
                 self.delegate?.github(self, didReceiveError: error!)
