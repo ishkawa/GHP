@@ -12,6 +12,8 @@
 		7F26543B19F75E6D004828E8 /* Main.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F26543919F75E6D004828E8 /* Main.xib */; };
 		7F26545119F75EBE004828E8 /* GitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F26545019F75EBE004828E8 /* GitHub.swift */; };
 		7F26545319F767F1004828E8 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F26545219F767F1004828E8 /* Notification.swift */; };
+		7F2E4EA719F7A4AB00F5CBF8 /* SettingsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2E4EA519F7A4AB00F5CBF8 /* SettingsWindowController.swift */; };
+		7F2E4EA819F7A4AB00F5CBF8 /* SettingsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F2E4EA619F7A4AB00F5CBF8 /* SettingsWindowController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		7F26543A19F75E6D004828E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Main.xib; sourceTree = "<group>"; };
 		7F26545019F75EBE004828E8 /* GitHub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHub.swift; sourceTree = "<group>"; };
 		7F26545219F767F1004828E8 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		7F2E4EA519F7A4AB00F5CBF8 /* SettingsWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsWindowController.swift; sourceTree = "<group>"; };
+		7F2E4EA619F7A4AB00F5CBF8 /* SettingsWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,8 @@
 				7F26543519F75E6D004828E8 /* AppDelegate.swift */,
 				7F26545019F75EBE004828E8 /* GitHub.swift */,
 				7F26545219F767F1004828E8 /* Notification.swift */,
+				7F2E4EA519F7A4AB00F5CBF8 /* SettingsWindowController.swift */,
+				7F2E4EA619F7A4AB00F5CBF8 /* SettingsWindowController.xib */,
 				7F26543719F75E6D004828E8 /* Images.xcassets */,
 				7F26543919F75E6D004828E8 /* Main.xib */,
 				7F26543319F75E6D004828E8 /* Supporting Files */,
@@ -130,6 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F26543819F75E6D004828E8 /* Images.xcassets in Resources */,
+				7F2E4EA819F7A4AB00F5CBF8 /* SettingsWindowController.xib in Resources */,
 				7F26543B19F75E6D004828E8 /* Main.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,6 +150,7 @@
 			files = (
 				7F26545119F75EBE004828E8 /* GitHub.swift in Sources */,
 				7F26543619F75E6D004828E8 /* AppDelegate.swift in Sources */,
+				7F2E4EA719F7A4AB00F5CBF8 /* SettingsWindowController.swift in Sources */,
 				7F26545319F767F1004828E8 /* Notification.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,6 +287,7 @@
 				7F26544C19F75E6D004828E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
