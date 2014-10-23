@@ -12,7 +12,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 
     override init() {
         lastDate = NSDate.distantPast() as NSDate
-        timer = NSTimer.scheduledTimerWithTimeInterval(5.0,
+        timer = NSTimer.scheduledTimerWithTimeInterval(60.0,
             target: GitHub.instance,
             selector: "fetchNotifications",
             userInfo: nil,
