@@ -48,6 +48,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     @IBAction func showSettingsWindow(sender: NSMenuItem) {
         settingsWindowController = SettingsWindowController(windowNibName: "SettingsWindowController")
         settingsWindowController?.showWindow(sender)
+        NSApp.activateIgnoringOtherApps(true)
     }
 
     @IBAction func quit(sender: NSMenuItem) {
