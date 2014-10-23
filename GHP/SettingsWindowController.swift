@@ -25,5 +25,7 @@ class SettingsWindowController: NSWindowController {
 
         github.accessToken = accessTokenField.stringValue
         github.saveCurrentConfiguration()
+
+        window?.close()
     }
 }
