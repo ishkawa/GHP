@@ -8,23 +8,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     var settingsWindowController: SettingsWindowController?
 
     var lastDate: NSDate
-    let client: GitHub
     let timer: NSTimer
 
     override init() {
-        let accessToken = ""
-        let baseURL = NSURL(string: "https://api.github.com")
-        assert(baseURL != nil, "base URL should not be nil.")
-
         lastDate = NSDate.distantPast() as NSDate
-        client = GitHub(baseURL: baseURL!, accessToken: accessToken)
         timer = NSTimer.scheduledTimerWithTimeInterval(5.0,
-            target: client,
+            target: GitHub.instance,
             selector: "fetchNotifications",
             userInfo: nil,
             repeats: true)
     }
 
+    // MARK: NSApplicationDelegate
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(50.0)
         statusItem.title = "GHP"
@@ -32,15 +27,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         statusItem.action = "showMenu"
         statusItem.enabled = true
 
-        client.delegate = self
+        GitHub.instance.delegate = self
         NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
     }
-
 
     // MARK: NSUserNotificationCenterDelegate
     func userNotificationCenter(center: NSUserNotificationCenter, didActivateNotification userNotification: NSUserNotification) {
         if let path = userNotification.userInfo?["path"] as? String {
-            client.fetchHTMLURLFromAPIPath(path) { URL in
+            GitHub.instance.fetchHTMLURLFromAPIPath(path) { URL in
                 let workspace = NSWorkspace.sharedWorkspace()
                 workspace.openURL(URL)
             }

@@ -1,24 +1,45 @@
 import Foundation
 
+private let NSUserDefaultsBaseURLKey  = "NSUserDefaultsBaseURLKey"
+private let UICKeychainAccessTokenKey = "UICKeychainAccessTokenKey"
+
 protocol GitHubDelegate {
     func github(github: GitHub, didReceiveNotification notification: Notification)
     func github(github: GitHub, didReceiveError error: NSError)
 }
 
 class GitHub: NSObject {
-    let baseURL: NSURL
-    let accessToken: String
+    class var instance: GitHub {
+        struct Singleton {
+            static let instance = GitHub()
+        }
+        return Singleton.instance
+    }
+
+    var baseURL: NSURL
+    var accessToken: String?
     var delegate: GitHubDelegate?
 
-    init(baseURL: NSURL, accessToken: String) {
-        self.baseURL = baseURL
-        self.accessToken = accessToken
+    override init() {
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+
+        var savedURL: NSURL?
+        if let savedURLString = userDefaults.objectForKey(NSUserDefaultsBaseURLKey) as? String {
+            savedURL = NSURL(string: savedURLString ?? "https://api.github.com")
+        }
+
+        baseURL = savedURL ?? NSURL(string: "https://api.github.com")!
+        accessToken = UICKeyChainStore.stringForKey(UICKeychainAccessTokenKey)
     }
 
     private func call(path: String, handler: (response: AnyObject?, error: NSError?) -> Void) {
+        if accessToken == nil {
+            return
+        }
+
         let request = NSMutableURLRequest()
         request.URL = baseURL.URLByAppendingPathComponent(path)
-        request.setValue("token \(accessToken)", forHTTPHeaderField: "Authorization")
+        request.setValue("token \(accessToken!)", forHTTPHeaderField: "Authorization")
         request.cachePolicy = .ReloadIgnoringLocalAndRemoteCacheData
 
         let session = NSURLSession.sharedSession()
@@ -42,7 +63,6 @@ class GitHub: NSObject {
         }
 
         task.resume()
-
     }
 
     func fetchNotifications() {
@@ -86,5 +106,13 @@ class GitHub: NSObject {
                 }
             }
         }
+    }
+
+    func saveCurrentConfiguration() {
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        userDefaults.setObject(baseURL.absoluteString, forKey: NSUserDefaultsBaseURLKey)
+        userDefaults.synchronize()
+
+        UICKeyChainStore.setString(accessToken, forKey: UICKeychainAccessTokenKey)
     }
 }
