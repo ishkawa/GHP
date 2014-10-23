@@ -3,6 +3,7 @@ import Cocoa
 class SettingsWindowController: NSWindowController {
     @IBOutlet weak var baseURLField: NSTextField!
     @IBOutlet weak var accessTokenField: NSSecureTextField!
+    @IBOutlet weak var saveButton: NSButton!
 
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -14,6 +15,8 @@ class SettingsWindowController: NSWindowController {
         if let accessToken = GitHub.instance.accessToken {
             accessTokenField.stringValue = accessToken
         }
+
+        saveButton.keyEquivalent = "\r"
     }
 
     @IBAction func save(sender: NSButton) {

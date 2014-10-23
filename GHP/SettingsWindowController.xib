@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="accessTokenField" destination="g2n-fF-6bH" id="mZF-rX-zQ5"/>
                 <outlet property="baseURLField" destination="6IC-WP-OqS" id="FtW-KZ-oPn"/>
+                <outlet property="saveButton" destination="uId-kb-1hE" id="Wbh-du-IZO"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>

@@ -21,7 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 
     // MARK: NSApplicationDelegate
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(50.0)
+        statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(35.0)
         statusItem.title = "GHP"
         statusItem.target = self
         statusItem.action = "showMenu"
