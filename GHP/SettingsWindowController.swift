@@ -2,7 +2,7 @@ import Cocoa
 
 class SettingsWindowController: NSWindowController {
     @IBOutlet weak var baseURLField: NSTextField!
-    @IBOutlet weak var accessTokenField: NSTextField!
+    @IBOutlet weak var accessTokenField: NSSecureTextField!
 
     override func windowDidLoad() {
         super.windowDidLoad()
