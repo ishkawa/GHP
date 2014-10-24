@@ -58,6 +58,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     func github(github: GitHub, didReceiveNotification notification: Notification) {
         dispatch_async(dispatch_get_main_queue(), {
             if notification.date.compare(self.lastDate) == .OrderedDescending {
+                self.statusItem.title = "GHP"
                 self.lastDate = notification.date
 
                 let userNotification = NSUserNotification()
@@ -74,12 +75,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 
     func github(github: GitHub, didReceiveError error: NSError) {
         dispatch_async(dispatch_get_main_queue(), {
-            let userNotification = NSUserNotification()
-            userNotification.title = "GHP failed to access GitHub"
-            userNotification.subtitle = error.localizedDescription
-
-            let center = NSUserNotificationCenter.defaultUserNotificationCenter()
-            center.deliverNotification(userNotification)
+            self.statusItem.title = "✗"
+            println("error: \(error.localizedDescription)")
         })
     }
 }
