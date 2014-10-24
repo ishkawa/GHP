@@ -52,6 +52,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     }
 
     @IBAction func quit(sender: NSMenuItem) {
+        NSApplication.sharedApplication().terminate(sender)
     }
 
     // MARK: GitHubDelegate
